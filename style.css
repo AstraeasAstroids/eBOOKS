@@ -1,18 +1,40 @@
+/* Base Styling */
 body {
-  background-color: #fdf6e3;
-  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, #fdf6e3, #e0eafc);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
   margin: 0;
-  padding: 20px;
-  color: #333;
+  padding: 0;
+  line-height: 1.6;
 }
 
+/* Container Styling */
+.container {
+  max-width: 960px;
+  margin: 50px auto 0;
+  padding: 40px 20px;
+  background-color: #ffffffcc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+/* Headings */
 h1 {
-  color: #2a7ae2;
+  text-align: center;
+  color: #6a1b9a;
+  margin-bottom: 20px;
+}
+
+/* Paragraphs */
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
   text-align: center;
 }
 
+/* Links */
 a {
-  color: #d33682;
+  color: #0077cc;
   text-decoration: none;
 }
 

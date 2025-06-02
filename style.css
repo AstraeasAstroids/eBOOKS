@@ -1,0 +1,21 @@
+body {
+  background-color: #fdf6e3;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  color: #2a7ae2;
+  text-align: center;
+}
+
+a {
+  color: #d33682;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

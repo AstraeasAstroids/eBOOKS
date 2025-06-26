@@ -28,6 +28,9 @@ def get_images():
     # Send the list of URLs back as JSON
     return jsonify(image_urls)
 # If you run this script directly (python your_app.py), start Flask’s dev server
+import os
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # use Render's port or default to 5000
+    app.run(host='0.0.0.0', port=port)
 

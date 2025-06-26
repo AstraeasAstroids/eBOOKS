@@ -32,9 +32,14 @@ def get_images():
     return jsonify(image_urls)
 # If you run this script directly (python your_app.py), start Flask’s dev server
 
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
 @app.route('/')
 def home():
-    return '<h1>Welcome to Astraea\'s Books</h1><p>Go to <a href="images">/images</a> to see your image list.</p>'
+    return render_template('project.html')
+# If you want to run this app in a browser, open it automatically
 import os
 
 if __name__ == '__main__':

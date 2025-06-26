@@ -10,9 +10,7 @@ CORS(app)
 # Define a GET endpoint at /images
 @app.route('/images', methods=['GET'])
 
-@app.route('/')
-def home():
-    return '<h1>Welcome to Astraea\'s Books</h1><p>Go to <a href="/images">/images</a> to see your image list.</p>'
+
 
 def get_images():
     # Build the path to the folder where your images live
@@ -33,6 +31,10 @@ def get_images():
     # Send the list of URLs back as JSON
     return jsonify(image_urls)
 # If you run this script directly (python your_app.py), start Flask’s dev server
+
+@app.route('/')
+def home():
+    return '<h1>Welcome to Astraea\'s Books</h1><p>Go to <a href="images">/images</a> to see your image list.</p>'
 import os
 
 if __name__ == '__main__':

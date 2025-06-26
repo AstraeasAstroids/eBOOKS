@@ -1,0 +1,12 @@
+# Exported from Render on 2025-06-26T01:39:33Z
+services:
+- type: web
+  name: eBOOKS
+  runtime: python
+  repo: https://github.com/AstraeasAstroids/eBOOKS
+  plan: free
+  region: oregon
+  buildCommand: pip install -r requirements.txt
+  startCommand: gunicorn your_application.wsgi
+  autoDeployTrigger: commit
+version: "1"

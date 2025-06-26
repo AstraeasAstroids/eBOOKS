@@ -1,0 +1,177 @@
+<!-- This is a simple HTML file -->
+<!-- that serves as a template for a web page -->
+
+
+
+<!DOCTYPE html>
+<!-- The doctype declaration defines the document type and version of HTML
+ The HTML element is the root element of an HTML page 
+The lang attribute specifies the language of the document -->
+
+ <!--html lang="en"-->
+    <!-- The head element contains meta-information about the document -->
+    <!-- The meta HTML tag or element provides metadata about the HTML document -->
+     
+    <head>
+        <!-- The viewport meta HTML tag or element is used to control the width and scaling of the viewport-->
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <!-- The charset meta HTML tag or element specifies the character encoding for the HTML document -->
+        <meta charset="UTF-8">    
+        <!-- The title HTML tag or element defines the title of the document -->
+        <title>The Artists Portfolio</title>
+
+
+        <script>
+// This script will run in the browser to fetch and display images from the Flask server
+// It uses the Fetch API to make HTTP requests and manipulate the DOM to display images
+          const express = require('express')
+const app = express()
+const port = process.env.PORT || 4000 
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
+
+
+
+// Define an asynchronous function that will fetch and display images
+async function loadImages() {
+  try {
+    // Send an HTTP GET request to the Flask server’s /images endpoint
+    const res = await fetch("http://127.0.0.1:5000/images");
+   // Parse the JSON response into a JavaScript array of URLs
+    const imageUrls = await res.json();
+    // Find the container element where project cards will go
+    const projectsDiv = document.getElementById("projects");
+     // If the container doesn’t exist, log an error and stop
+    if (!projectsDiv) {
+      console.error("Element with id 'projects' not found");
+      return;
+    }
+
+    // clear any existing content  // Remove any existing content in the container
+    projectsDiv.innerHTML = "";
+
+    // loop through images and add them safely  // For each URL in the array, build and insert a new image card
+    imageUrls.forEach(url => {
+       // Create a wrapper div for styling each project card
+      const card = document.createElement("div");
+      card.className = "project-card";
+      // Create an <img> element and set its source to the URL
+      const img = document.createElement("img");
+      img.src = url;
+      img.alt = "project image";
+      img.style.width = "100%";
+      img.style.display = "block";
+    // Nest the image inside the card wrapper
+      card.appendChild(img);
+      // Add the card to the projects container in the DOM
+      projectsDiv.appendChild(card); 
+    });
+  } catch (err) {
+    console.error("Failed to load images:", err);
+  }
+}
+// Wait until the initial HTML document has been completely loaded and parsed
+  // Then call the loadImages function to fetch and display the images
+window.addEventListener("DOMContentLoaded", loadImages);
+</script>
+        <style>
+          /* Define a responsive grid container for all project cards */
+                .projects-grid {
+        display: grid;            /* Use CSS Grid layout */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Create as many columns as fit, each at least 200px */
+        gap: 1rem;  /* Space between grid items */
+        padding: 20px; /* Inner spacing around the grid */
+        }
+          /* Style for each individual project card */
+        .project-card {
+        background-color: #f9f9f9;  /* Light grey background */
+        border-radius: 10px;   /* Rounded corners */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Subtle drop shadow */
+        overflow: hidden; /* Clip any overflowing child elements */
+        transition: transform 0.2s ease; /* Smooth transform on hover or other state changes */
+        }
+        /* To change the hover effect on the image cards */
+        .project-card:hover {
+        transform: scale(1.03);
+        }
+
+        /* This is where I can make changes to the image cards */
+
+        .project-card img {
+        display: block;
+        width: 100%;
+        height: auto;
+        }
+        </style>
+    </head>
+
+    <!-- The body element contains the content of the document -->
+
+    <body style="font-family: Helvetica; 
+    background-color: #50b6cf; 
+    color: rgba(3, 26, 4, 0.911); 
+    text-align: center; 
+    padding: 20px;">
+
+ 
+    </body>
+
+        <h1>Welcome to the Artists Portfolio</h1>
+
+       <div id="projects" class="projects-grid"></div>
+
+       
+    <!-- The body element contains the content of the document  
+    <h2><p> The following images are created by Roxanne Elaine Parrish</p></h2>
+    <p><h3> Available for print only</p></h3>
+       
+        <img src= "Radiant Heart.jpg" alt = "Image 1" style="width: 500px; height: 700;"> 
+        <p> "Vibrant Heart - Acrylic on Canvas" </p>
+        <img src="Ballerina.jpg" alt = "Image 2" style="width: 500px; height: 500px;"> 
+        <p> "Ballerina Dreamscape - Acrylic on Canvas" </p>
+        <img src = "FillaCup.jpg" alt = "Image 3" style="width:500px; height: 800px;">
+        <p> "How to Fill a Cup - Acrylic on Canvas" </p>
+        <img src="Agony.jpg" alt = "Image 4" style="width: 500px; height: 400px;">   
+        <p> "Agony - Acrylic on Canvas" </p>
+        <img src= "Whales.jpg " alt="Image 5" style="width: 500px; height: 700px;">
+        <p> "Whales - Acrylic on Canvas" </p>
+        <img src ="GreenMan.jpg" alt = "Image 6" style="width: 700px; height: 500px;"> 
+        <p> "GreenMan - Oil on Canvas" </p>
+        <img src = "PrayorChoir.jpg" alt = "Image 7" style="width: 500px; height: 700px;">
+        <p> "Prayor-Choir - Acrylic on Canvas"</p>
+        <img src = "WInged.jpg " alt = "Image 8" style="width: 500px; height: 700px;">
+        <p> "Winged - Acrylic on Canvas" </p>
+        <img src = "Angel Vision.jpg" alt = "Image 9" style="width: 500px; height: 700px;">
+        <p> "Angel Vision - Acrylic on Canvas" </p>
+        <img src = "Hearts of a Feather.jpg"    alt = "Image 10" style="width: 300px; height: 200px;">
+        <p> "Hearts of a Feather - Acrylic on Canvas" </p>
+        <img src = "Protected.jpg " alt = "Image 11" style="width: 500px; height: 700px;">
+        <p> "Protected - Acrylic on Canvas" </p>
+        <img src = "MoonShine.jpg" alt = "Image 12" style="width: 700px; height: 500px;">
+        <p> "MoonShine - Acrylic on Canvas" </p>    
+        <img src = "Ladder CNS.jpg" alt = "Image 13" style="width: 500px; height: 700px;">
+        <p> "Ladder CNS - Acrylic on Canvas" </p>
+        <img src = " Heart feathers.jpg" alt = "Image 14" style="width: 200px; height: 200px;">
+        <p> "Heart Feathers - Acrylic on Canvas" </p>
+        <img src = " Flower Trap.jpg"   alt = "Image 15" style="width: 100px; height: 200px;">
+        <p> "Flower Trap - Acrylic on Canvas" </p>
+        <img src = "Green Big Red HEART and EYES.jpg " alt = "Image 16" style="width: 300px; height: 300px;">
+        <p> "Green Big Red Heart and Eyes " </p>
+        <img src = " Sea Fancy.jpg" alt = "Image 17" style="width: 100px; height: 200px;">
+        <p> "Sea Fancy " </p>
+        <img src = "water_charcoal.jpg "    alt = "Image 18" style="width: 700px; height: 500px;">
+        <p> "Water Charcoal " </p>
+        <img src = "Selfportrait2002.jpg "  alt = "Image 19" style="width: 500px; height: 700px;">
+        <p> "Self Portrait 2002 " </p>
+        <img src = "Selfportrait2003.jpg " alt = "Image 20" style="width: 500px; height: 700px;">
+        <p> "Self Portrait 2003 " </p> -->
+       
+  
+    </body>

@@ -12,7 +12,12 @@ CORS(app)
 # Route: Home page
 @app.route('/')
 def home():
+    return render_template('index.html')
+
+@app.route('/art')
+def art():
     return render_template('project.html')
+
 # Define a GET endpoint at /images
 
 # Route: /images - returns list of image URLs

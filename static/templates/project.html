@@ -17,82 +17,7 @@ The lang attribute specifies the language of the document -->
         <meta charset="UTF-8">    
         <!-- The title HTML tag or element defines the title of the document -->
         <title>The Artists Portfolio</title>
-
-
-        <script>
-// Define an asynchronous function that will fetch and display images
-async function loadImages() {
-  try {
-    // Send an HTTP GET request to the Flask server’s /images endpoint
-    const res = await fetch("http://127.0.0.1:5000/images");
-   // Parse the JSON response into a JavaScript array of URLs
-    const imageUrls = await res.json();
-    // Find the container element where project cards will go
-    const projectsDiv = document.getElementById("projects");
-     // If the container doesn’t exist, log an error and stop
-    if (!projectsDiv) {
-      console.error("Element with id 'projects' not found");
-      return;
-    }
-
-    // clear any existing content  // Remove any existing content in the container
-    projectsDiv.innerHTML = "";
-
-    // loop through images and add them safely  // For each URL in the array, build and insert a new image card
-    imageUrls.forEach(url => {
-       // Create a wrapper div for styling each project card
-      const card = document.createElement("div");
-      card.className = "project-card";
-      // Create an <img> element and set its source to the URL
-      const img = document.createElement("img");
-      img.src = url;
-      img.alt = "project image";
-      img.style.width = "100%";
-      img.style.display = "block";
-    // Nest the image inside the card wrapper
-      card.appendChild(img);
-      // Add the card to the projects container in the DOM
-      projectsDiv.appendChild(card); 
-    });
-  } catch (err) {
-    console.error("Failed to load images:", err);
-  }
-}
-// Wait until the initial HTML document has been completely loaded and parsed
-  // Then call the loadImages function to fetch and display the images
-window.addEventListener("DOMContentLoaded", loadImages);
-</script>
-        <style>
-          /* Define a responsive grid container for all project cards */
-                .projects-grid {
-        display: grid;            /* Use CSS Grid layout */
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Create as many columns as fit, each at least 200px */
-        gap: 1rem;  /* Space between grid items */
-        padding: 20px; /* Inner spacing around the grid */
-        }
-          /* Style for each individual project card */
-        .project-card {
-        background-color: #f9f9f9;  /* Light grey background */
-        border-radius: 10px;   /* Rounded corners */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Subtle drop shadow */
-        overflow: hidden; /* Clip any overflowing child elements */
-        transition: transform 0.2s ease; /* Smooth transform on hover or other state changes */
-        }
-        /* To change the hover effect on the image cards */
-        .project-card:hover {
-        transform: scale(1.03);
-        }
-
-        /* This is where I can make changes to the image cards */
-
-        .project-card img {
-        display: block;
-        width: 100%;
-        height: auto;
-        }
-        </style>
     </head>
-
     <!-- The body element contains the content of the document -->
 
     <body style="font-family: Helvetica; 
@@ -101,15 +26,15 @@ window.addEventListener("DOMContentLoaded", loadImages);
     text-align: center; 
     padding: 20px;">
 
- 
+        {% for img in images %}
+            <img src="{{ img }}" alt="Artwork" class="artwork_images">
+        {% endfor %}
+        
     </body>
 
         <h1>Welcome to the Artists Portfolio</h1>
 
-       <div id="projects" class="projects-grid"></div>
-
-       
-    <!-- The body element contains the content of the document  
+    <!-- The body element contains the content of the document -->
     <h2><p> The following images are created by Roxanne Elaine Parrish</p></h2>
     <p><h3> Available for print only</p></h3>
        
@@ -152,7 +77,7 @@ window.addEventListener("DOMContentLoaded", loadImages);
         <img src = "Selfportrait2002.jpg "  alt = "Image 19" style="width: 500px; height: 700px;">
         <p> "Self Portrait 2002 " </p>
         <img src = "Selfportrait2003.jpg " alt = "Image 20" style="width: 500px; height: 700px;">
-        <p> "Self Portrait 2003 " </p> -->
+        <p> "Self Portrait 2003 " </p> 
        
   
     </body>

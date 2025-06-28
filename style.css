@@ -17,8 +17,18 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
 }
-li img{
-  display : flex;
+/* Centering Content */
+.center-content {
+  display: inline-block; /* Use inline-block to center the content */
+  text-align: center; /* Center the text inside the container */
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* List Styling */
+ul li img{
+  display : inline-block;
   align-items: center;
   justify-content: center;
 }
@@ -39,13 +49,15 @@ p {
 /* Links */
 a {
   color: #0077cc;
-  text-decoration: none;
+  text-decoration: none; 
 }
-
+/* Links Hover Effect */
 a:hover {
   text-decoration: underline;
 }
+/* Sticky Navigation */
 sticky-nav {
+  text-align: center  ; /* Center the navigation links */
 
   position: sticky;
 
@@ -68,16 +80,19 @@ sticky-nav {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
 }
- 
+ /* Sticky Navigation Links */
  ul
  { 
   list-style: none;
   
 }
-
+/* Sticky Navigation List Items */
 sticky-nav ul {
 
-  display: flex;
+  display: inline-block;   /* Use inline-block to center the list items */
+  text-align: center; /* Center the list items */
+  justify-content: center; /* Center the list items */
+  align-items: center; /* Center the list items vertically */
 
   gap: 1.5rem;
 
@@ -85,9 +100,13 @@ sticky-nav ul {
 
   padding: 0;
 
+
 }
- 
+
+ /* Sticky Navigation Links */
 sticky-nav a {
+  
+  
 
   color: #f5f5f5;
 
@@ -98,10 +117,26 @@ sticky-nav a {
   transition: color 0.3s ease;
 
 }
- 
+ /* Sticky Navigation Links Hover Effect */
 sticky-nav a:hover {
 
   color: #ff3c28;
 
 }
- 
+
+/* more specific selector: only target <nav> elements */
+nav.stick-nav {
+  display: grid;              /* make the nav a flex container */
+  place-items: center;   /* center the items horizontally and vertically */
+  
+  height: 60px;            /* set a height for the nav */
+}
+
+ /* reset the UL so it doesn’t have default margins/padding */
+nav.stick-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;              /* lay your <li>s out in a row */
+  gap: 1rem;                 
+}

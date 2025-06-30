@@ -1,3 +1,4 @@
 "build/" 
 myvenv/ 
 myvenv/ 
+"__pycache__/" 

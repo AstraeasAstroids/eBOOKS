@@ -1,3 +1,4 @@
 "*.mp3 filter=lfs diff=lfs merge=lfs -text" 
 D:/UAT/Courses/MS[[:space:]]CYS/MS587[[:space:]]Web[[:space:]]Apps[[:space:]]and[[:space:]]Databases/EBOOK[[:space:]]WEBSITE/The[[:space:]]Ninth[[:space:]]Flame[[:space:]]AUDIO.mp3 filter=lfs diff=lfs merge=lfs -text
 The[[:space:]]Ninth[[:space:]]Flame[[:space:]]AUDIO.mp3 filter=lfs diff=lfs merge=lfs -text
+*.mp3 filter=lfs diff=lfs merge=lfs -text
